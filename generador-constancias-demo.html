@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Constancias - Demo Interactivo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #3b82f6;
+            --secondary: #06b6d4;
+            --success: #10b981;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+            --dark: #0f172a;
+            --light: #f8fafc;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(6, 182, 212, 0.05));
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--dark);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .navbar-custom {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 1px 3px rgba(15, 23, 42, 0.1);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 1.3rem;
+        }
+
+        .badge-demo {
+            background: var(--success) !important;
+            color: white;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(6, 182, 212, 0.1));
+            border-radius: 16px;
+            padding: 3rem 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .hero-section h1 {
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .hero-section p {
+            font-size: 1.1rem;
+            color: #64748b;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .feature-box {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            border-left: 4px solid var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.1);
+        }
+
+        .feature-box i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .feature-box h3 {
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .feature-box p {
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        .demo-section {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05);
+        }
+
+        .step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(6, 182, 212, 0.05));
+            border-radius: 12px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .step-number {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.2rem;
+            margin-right: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .step-content h4 {
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .step-content p {
+            color: #64748b;
+            margin: 0;
+        }
+
+        .file-input-wrapper {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .file-input-wrapper input[type="file"] {
+            display: none;
+        }
+
+        .file-label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, var(--primary), #2563eb);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary);
+        }
+
+        .file-label:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+        }
+
+        .upload-area {
+            border: 2px dashed var(--primary);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            background: rgba(59, 130, 246, 0.02);
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+        }
+
+        .upload-area.dragover {
+            border-color: var(--secondary);
+            background: rgba(6, 182, 212, 0.05);
+        }
+
+        .preview-table {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05);
+            margin: 2rem 0;
+        }
+
+        .preview-table table {
+            margin: 0;
+            width: 100%;
+        }
+
+        .preview-table th {
+            background: linear-gradient(135deg, var(--primary), #2563eb);
+            color: white;
+            font-weight: 600;
+            border: none;
+            padding: 1rem !important;
+        }
+
+        .preview-table td {
+            padding: 1rem !important;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .preview-table tr:hover {
+            background: rgba(59, 130, 246, 0.03);
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 0.35rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .status-success {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--success);
+        }
+
+        .status-processing {
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--primary);
+        }
+
+        .btn-generate {
+            background: linear-gradient(135deg, var(--success), #059669);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .btn-generate:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .stat-box {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            border-top: 3px solid var(--primary);
+            box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #64748b;
+            font-weight: 600;
+        }
+
+        .card-modern {
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05);
+        }
+
+        .card-modern:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.1);
+            border-color: var(--primary);
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 16px;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .cta-section h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .github-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: white;
+            color: var(--primary);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .github-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        footer {
+            background: var(--dark);
+            color: rgba(255, 255, 255, 0.7);
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 4rem;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            transition: all 0.2s ease;
+        }
+
+        .back-btn:hover {
+            transform: translateX(-4px);
+        }
+
+        .progress-bar {
+            height: 25px;
+            border-radius: 6px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar-custom">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-file-invoice"></i>
+                Generador de Constancias
+            </div>
+        </div>
+    </nav>
+
+    <div class="container py-5">
+        <a href="javascript:history.back()" class="back-btn">
+            <i class="fas fa-arrow-left"></i> Volver al portafolio
+        </a>
+
+        <!-- Hero -->
+        <div class="hero-section">
+            <h1>Generador de Constancias Automatizado</h1>
+            <p>Sistema inteligente para generar certificados y constancias de forma masiva desde Excel</p>
+            <span class="badge badge-demo"><i class="fas fa-check-circle"></i> Demo Activa</span>
+        </div>
+
+        <!-- Features -->
+        <h2 class="mt-5 mb-4" style="font-weight: 800;">Características Principales</h2>
+        <div class="feature-grid">
+            <div class="feature-box">
+                <i class="fas fa-file-excel"></i>
+                <h3>Importar desde Excel</h3>
+                <p>Carga masiva de datos desde archivos .xlsx o .csv</p>
+            </div>
+            <div class="feature-box">
+                <i class="fas fa-magic"></i>
+                <h3>Generación Automática</h3>
+                <p>Crea documentos PDF/Word en lotes de forma instantánea</p>
+            </div>
+            <div class="feature-box">
+                <i class="fas fa-check-square"></i>
+                <h3>Validación de Datos</h3>
+                <p>Verificación automática de integridad y consistencia</p>
+            </div>
+            <div class="feature-box">
+                <i class="fas fa-tachometer-alt"></i>
+                <h3>Alto Rendimiento</h3>
+                <p>Genera miles de constancias en minutos</p>
+            </div>
+        </div>
+
+        <!-- Interactive Demo -->
+        <div class="demo-section">
+            <h2 class="mb-4" style="font-weight: 800;">Demostración en Vivo</h2>
+
+            <!-- Step 1: Upload -->
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h4>Cargar Archivo Excel</h4>
+                    <p>Selecciona tu archivo .xlsx con los datos de los beneficiarios</p>
+                </div>
+            </div>
+
+            <div class="upload-area" id="uploadArea">
+                <i class="fas fa-cloud-upload-alt" style="font-size: 3rem; color: var(--primary); margin-bottom: 1rem; display: block;"></i>
+                <p style="margin-bottom: 1rem;">Arrastra tu archivo aquí o haz clic para seleccionar</p>
+                <div class="file-input-wrapper">
+                    <input type="file" id="fileInput" accept=".xlsx,.xls,.csv">
+                    <label for="fileInput" class="file-label">
+                        <i class="fas fa-folder-open"></i>
+                        Seleccionar Archivo
+                    </label>
+                </div>
+            </div>
+
+            <!-- Step 2: Preview -->
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h4>Verificar y Revisar Datos</h4>
+                    <p>Visualiza los datos antes de generar las constancias</p>
+                </div>
+            </div>
+
+            <div class="preview-table" id="previewTable" style="display: none;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Cédula</th>
+                            <th>Concepto</th>
+                            <th>Fechas</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Juan Pérez García</strong></td>
+                            <td>1234567890</td>
+                            <td>Capacitación en Sistemas</td>
+                            <td>20/01/2025 - 27/01/2025</td>
+                            <td><span class="status-badge status-success">✓ Listo</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>María González López</strong></td>
+                            <td>0987654321</td>
+                            <td>Diplomado en Gestión</td>
+                            <td>15/01/2025 - 30/01/2025</td>
+                            <td><span class="status-badge status-success">✓ Listo</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Carlos Rodríguez Martín</strong></td>
+                            <td>5555555555</td>
+                            <td>Certificación Profesional</td>
+                            <td>10/01/2025 - 25/01/2025</td>
+                            <td><span class="status-badge status-success">✓ Listo</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Ana Martínez Sánchez</strong></td>
+                            <td>4444444444</td>
+                            <td>Taller de Desarrollo</td>
+                            <td>05/01/2025 - 20/01/2025</td>
+                            <td><span class="status-badge status-success">✓ Listo</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Step 3: Generate -->
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h4>Generar Constancias</h4>
+                    <p>Crea todos los documentos con un solo clic</p>
+                </div>
+            </div>
+
+            <button class="btn-generate" onclick="generateConstancias()">
+                <i class="fas fa-magic me-2"></i>
+                Generar Constancias (4 documentos)
+            </button>
+
+            <!-- Progress -->
+            <div id="progressSection" style="display: none; margin-top: 2rem;">
+                <p style="margin-bottom: 1rem; font-weight: 600;">Generando constancias...</p>
+                <div class="progress" style="height: 30px; border-radius: 8px; overflow: hidden;">
+                    <div class="progress-bar" id="progressBar" style="width: 0%; background: linear-gradient(90deg, var(--success), #059669);"></div>
+                </div>
+                <p style="margin-top: 1rem; font-size: 0.9rem; color: #64748b;" id="progressText">0%</p>
+            </div>
+
+            <!-- Success Message -->
+            <div id="successMessage" style="display: none; margin-top: 2rem; padding: 1.5rem; background: rgba(16, 185, 129, 0.1); border-left: 4px solid var(--success); border-radius: 8px;">
+                <h5 style="color: var(--success); margin-bottom: 1rem;">
+                    <i class="fas fa-check-circle"></i> ¡Constancias generadas exitosamente!
+                </h5>
+                <p style="margin-bottom: 0; color: #64748b;">📦 4 constancias en formato PDF listos para descargar</p>
+            </div>
+        </div>
+
+        <!-- Statistics -->
+        <h2 class="mt-5 mb-4" style="font-weight: 800;">Capacidades del Sistema</h2>
+        <div class="stats-grid">
+            <div class="stat-box">
+                <div class="stat-number">87%</div>
+                <div class="stat-label">Reducción de tiempo</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">∞</div>
+                <div class="stat-label">Documentos ilimitados</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Precisión garantizada</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">&lt;2s</div>
+                <div class="stat-label">Por documento</div>
+            </div>
+        </div>
+
+        <!-- Stack Teknológico -->
+        <h2 class="mt-5 mb-4" style="font-weight: 800;">Stack Tecnológico</h2>
+        <div class="row g-3">
+            <div class="col-md-3">
+                <div class="card card-modern">
+                    <div class="card-body text-center py-4">
+                        <i class="fab fa-angular" style="font-size: 3rem; color: var(--primary);"></i>
+                        <h5 class="mt-3">Angular</h5>
+                        <p class="text-muted small">Frontend moderno</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card card-modern">
+                    <div class="card-body text-center py-4">
+                        <i class="fab fa-js-square" style="font-size: 3rem; color: var(--primary);"></i>
+                        <h5 class="mt-3">TypeScript</h5>
+                        <p class="text-muted small">Type-safe code</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card card-modern">
+                    <div class="card-body text-center py-4">
+                        <i class="fas fa-file-excel" style="font-size: 3rem; color: var(--primary);"></i>
+                        <h5 class="mt-3">Excel Parser</h5>
+                        <p class="text-muted small">Integración Office</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card card-modern">
+                    <div class="card-body text-center py-4">
+                        <i class="fas fa-file-pdf" style="font-size: 3rem; color: var(--primary);"></i>
+                        <h5 class="mt-3">PDF Generator</h5>
+                        <p class="text-muted small">Generación documentos</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-section">
+            <h2>¿Listo para explorar el código?</h2>
+            <p>Revisa la arquitectura modular, componentes Angular y sistema de generación de documentos</p>
+            <a href="https://github.com/gabriela23456/Sistema-Generador-de-Constancias" target="_blank" class="github-link">
+                <i class="fab fa-github"></i> Ver en GitHub
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Generador de Constancias - Desarrollado por Gabriela Tecuapacho Juárez</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Drag and drop functionality
+        const uploadArea = document.getElementById('uploadArea');
+        const fileInput = document.getElementById('fileInput');
+
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.classList.add('dragover');
+        });
+
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.classList.remove('dragover');
+        });
+
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.classList.remove('dragover');
+            fileInput.files = e.dataTransfer.files;
+            handleFileSelect();
+        });
+
+        fileInput.addEventListener('change', handleFileSelect);
+
+        function handleFileSelect() {
+            if (fileInput.files.length > 0) {
+                document.getElementById('previewTable').style.display = 'table';
+                uploadArea.style.opacity = '0.6';
+            }
+        }
+
+        function generateConstancias() {
+            const progressSection = document.getElementById('progressSection');
+            const successMessage = document.getElementById('successMessage');
+            const progressBar = document.getElementById('progressBar');
+            const progressText = document.getElementById('progressText');
+
+            progressSection.style.display = 'block';
+            successMessage.style.display = 'none';
+
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += Math.random() * 30;
+                if (progress >= 100) {
+                    progress = 100;
+                    clearInterval(interval);
+                    progressBar.style.width = '100%';
+                    progressText.textContent = '100%';
+                    
+                    setTimeout(() => {
+                        progressSection.style.display = 'none';
+                        successMessage.style.display = 'block';
+                    }, 500);
+                } else {
+                    progressBar.style.width = progress + '%';
+                    progressText.textContent = Math.round(progress) + '%';
+                }
+            }, 300);
+        }
+    </script>
+</body>
+</html>

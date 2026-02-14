@@ -30,7 +30,7 @@ const PROJECTS = {
     imageUrl: 'images/constancias.jpg',
     fallbackImageUrl: 'https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=800&h=500&fit=crop',
     repoUrl: 'https://github.com/gabriela23456/Sistema-Generador-de-Constancias',
-    demoUrl: ''
+    demoUrl: 'generador-constancias-demo.html'
   },
   escolar: {
     title: 'Sistema Escolar',
