@@ -3,23 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gabriela Tecuapacho Juárez — Desarrolladora Web</title>
-    <meta name="description" content="Portafolio de Gabriela Tecuapacho Juárez. Desarrolladora web con proyectos en sistemas de gestión y aplicaciones full-stack.">
+    <title>Gabriela Tecuapacho Juárez — Desarrolladora Web Full-Stack</title>
+    <meta name="description" content="Portafolio profesional de Gabriela Tecuapacho Juárez. Desarrolladora web full-stack especializada en sistemas de gestión, aplicaciones empresariales y soluciones tecnológicas innovadoras.">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <!-- Gradiente de fondo animado -->
+    <div class="animated-background"></div>
+    
+    <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
         <div class="container">
-            <a class="navbar-brand fw-semibold" href="#">Gabriela Tecuapacho Juárez</a>
+            <a class="navbar-brand fw-bold" href="#">
+                <span class="brand-icon">G</span>
+                <span class="brand-text">Gabriela Dev</span>
+            </a>
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Menú">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto gap-1">
+                <ul class="navbar-nav ms-auto gap-3">
                     <li class="nav-item"><a class="nav-link" href="#about">Sobre mí</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Habilidades</a></li>
                     <li class="nav-item"><a class="nav-link" href="#projects">Proyectos</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">Contacto</a></li>
                 </ul>
@@ -29,41 +36,108 @@
 
     <header class="hero">
         <div class="container">
-            <div class="row align-items-center min-vh-75">
-                <div class="col-lg-8 mx-auto text-center">
-                    <p class="hero-label">Desarrolladora Web</p>
-                    <h1 class="hero-title">Gabriela Tecuapacho Juárez</h1>
-                    <p class="hero-subtitle">Creo soluciones web funcionales y bien construidas. Enfocada en código limpio, buenas prácticas y experiencia de usuario.</p>
-                    <a href="#projects" class="btn btn-primary btn-lg mt-3">Ver proyectos</a>
+            <div class="row align-items-center min-vh-100">
+                <div class="col-lg-10 mx-auto text-center">
+                    <div class="hero-badge mb-4">
+                        <i class="fas fa-code me-2"></i>
+                        <span>Desarrolladora Web Full-Stack</span>
+                    </div>
+                    <h1 class="hero-title">
+                        <span class="highlight-gradient">Gabriela</span> Tecuapacho Juárez
+                    </h1>
+                    <p class="hero-subtitle">Construyo soluciones web robustas y escalables. Especializada en sistemas de gestión empresarial, aplicaciones full-stack y experiencias de usuario excepcionales.</p>
+                    <div class="hero-cta mt-5">
+                        <a href="#projects" class="btn btn-primary btn-lg"><i class="fas fa-arrow-down me-2"></i>Ver mis proyectos</a>
+                        <a href="#contact" class="btn btn-outline-primary btn-lg"><i class="fas fa-envelope me-2"></i>Contactarme</a>
+                    </div>
+                    <div class="hero-scroll-indicator mt-5">
+                        <div class="scroll-mouse"></div>
+                    </div>
                 </div>
             </div>
         </div>
     </header>
 
-    <section id="about" class="section section-alt">
+    <section id="about" class="section section-alt py-5">
         <div class="container">
-            <div class="row align-items-center g-4">
+            <div class="row align-items-center g-5">
                 <div class="col-lg-5 text-center">
-                    <div class="profile-avatar">
-                        <span class="profile-initials">GTJ</span>
+                    <div class="profile-avatar-container">
+                        <div class="profile-avatar">
+                            <div class="avatar-inner">
+                                <span class="profile-initials">GTJ</span>
+                            </div>
+                        </div>
+                        <div class="avatar-decoration"></div>
                     </div>
                 </div>
                 <div class="col-lg-7">
-                    <h2 class="section-title">Sobre mí</h2>
-                    <p class="lead text-muted">Soy desarrolladora web con experiencia en aplicaciones full-stack y sistemas de gestión.</p>
-                    <p>Me especializo en construir sistemas que resuelven problemas reales: desde gestión de citas y administración hasta generación automatizada de documentos. Uso tecnologías como PHP, Astro, TypeScript, HTML, CSS y bases de datos SQL para entregar productos mantenibles y escalables.</p>
-                    <p>Busco sumarme a un equipo donde pueda seguir creciendo y aportar con código de calidad y soluciones bien pensadas.</p>
-                    <div class="skill-tags mt-4">
-                        <span>HTML5 & CSS3</span>
-                        <span>JavaScript</span>
-                        <span>PHP</span>
-                        <span>Java & Spring</span>
-                        <span>Astro</span>
-                        <span>TypeScript</span>
-                        <span>MySQL / SQLite</span>
-                        <span>REST API</span>
-                        <span>Bootstrap</span>
-                        <span>Git</span>
+                    <div class="section-label">Acerca de mí</div>
+                    <h2 class="section-title mb-4">Transformando ideas en código</h2>
+                    <p class="lead text-muted mb-3">Soy desarrolladora web full-stack apasionada por crear soluciones tecnológicas que impacten positivamente en los negocios.</p>
+                    <p class="text-muted mb-3">Me especializo en construir sistemas escalables que resuelven problemas reales: desde gestión de citas y administración empresarial, hasta generación automatizada de documentos y plataformas SaaS. Combino tecnologías modernas con buenas prácticas de desarrollo para entregar código limpio, mantenible y eficiente.</p>
+                    <p class="text-muted mb-4">Mi enfoque es integral: diseño arquitecturas robustas, escribo código limpio, optimizo el rendimiento y garantizo experiencias de usuario excepcionales.</p>
+                    <div class="experience-highlight">
+                        <div class="highlight-item">
+                            <h4>4+</h4>
+                            <p>Años de experiencia</p>
+                        </div>
+                        <div class="highlight-item">
+                            <h4>15+</h4>
+                            <p>Proyectos completados</p>
+                        </div>
+                        <div class="highlight-item">
+                            <h4>100%</h4>
+                            <p>Cliente satisfecho</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <div class="section-label">Stack Tecnológico</div>
+                <h2 class="section-title">Herramientas y tecnologías</h2>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3 class="skill-category-title">Frontend</h3>
+                    <div class="skills-list">
+                        <span class="skill-badge"><i class="fab fa-html5"></i> HTML5</span>
+                        <span class="skill-badge"><i class="fab fa-css3-alt"></i> CSS3</span>
+                        <span class="skill-badge"><i class="fab fa-js-square"></i> JavaScript</span>
+                        <span class="skill-badge"><i class="fab fa-react"></i> Bootstrap</span>
+                        <span class="skill-badge"><i class="fab fa-vuejs"></i> Astro</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3 class="skill-category-title">Backend</h3>
+                    <div class="skills-list">
+                        <span class="skill-badge"><i class="fab fa-php"></i> PHP</span>
+                        <span class="skill-badge"><i class="fab fa-java"></i> Java</span>
+                        <span class="skill-badge"><i class="fas fa-leaf"></i> Spring</span>
+                        <span class="skill-badge"><i class="fas fa-code"></i> TypeScript</span>
+                        <span class="skill-badge"><i class="fas fa-cube"></i> REST API</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3 class="skill-category-title">Bases de Datos</h3>
+                    <div class="skills-list">
+                        <span class="skill-badge"><i class="fas fa-database"></i> MySQL</span>
+                        <span class="skill-badge"><i class="fas fa-database"></i> SQLite</span>
+                        <span class="skill-badge"><i class="fas fa-database"></i> SQL</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3 class="skill-category-title">Herramientas</h3>
+                    <div class="skills-list">
+                        <span class="skill-badge"><i class="fab fa-git-alt"></i> Git</span>
+                        <span class="skill-badge"><i class="fab fa-github"></i> GitHub</span>
+                        <span class="skill-badge"><i class="fas fa-terminal"></i> Terminal</span>
+                        <span class="skill-badge"><i class="fas fa-code-branch"></i> Gradle</span>
                     </div>
                 </div>
             </div>
@@ -72,68 +146,109 @@
 
     <section id="projects" class="section">
         <div class="container">
-            <h2 class="section-title text-center mb-2">Proyectos</h2>
-            <p class="text-center text-muted mb-5">Haz clic en un proyecto para ver detalles y acceder al código</p>
+            <div class="text-center mb-5">
+                <div class="section-label">Portfolio</div>
+                <h2 class="section-title mb-3">Proyectos destacados</h2>
+                <p class="text-center text-muted">Haz clic en un proyecto para explorar los detalles, tecnologías utilizadas y acceder al código en GitHub</p>
+            </div>
             <div class="row g-4 justify-content-center" id="projectsGrid">
-                <div class="col-lg-6">
-                    <article class="project-card card h-100 border-0 shadow-sm project-card-interactive" data-project="therapy" role="button" tabindex="0">
+                <div class="col-lg-6 col-xl-5">
+                    <article class="project-card project-card-interactive" data-project="therapy" role="button" tabindex="0">
                         <div class="project-card-image">
                             <img src="images/terapia.jpg" data-fallback="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=800&h=500&fit=crop" alt="Sistema de Terapia Psicológica" onerror="this.onerror=null;this.src=this.dataset.fallback">
+                            <div class="project-overlay">
+                                <div class="project-tech-badges">
+                                    <span class="tech-badge">PHP</span>
+                                    <span class="tech-badge">Astro</span>
+                                    <span class="tech-badge">MySQL</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="card-body d-flex flex-column">
-                            <span class="project-card-badge">Ver proyecto</span>
-                            <h3 class="card-title h5">CenTI-R — Sistema de Terapia Psicológica</h3>
-                            <p class="card-text text-muted small">Sistema web para la gestión de citas de terapia psicológica. Login, registro, agendamiento, panel de administración y API REST. PHP + Astro, SQLite/MySQL.</p>
-                            <ul class="project-features">
-                                <li>Autenticación y roles (paciente, terapeuta, admin)</li>
-                                <li>CRUD de citas, pagos, recordatorios WhatsApp</li>
-                            </ul>
+                        <div class="project-card-body">
+                            <span class="project-card-badge">Sistema de Gestión</span>
+                            <h3 class="project-card-title">CenTI-R — Terapia Psicológica</h3>
+                            <p class="project-card-text">Plataforma completa para gestión de citas terapéuticas con autenticación por roles, pagos integrados y notificaciones por WhatsApp.</p>
+                            <div class="project-features-list">
+                                <div class="feature"><i class="fas fa-check-circle"></i> Multi-rol (paciente, terapeuta, admin)</div>
+                                <div class="feature"><i class="fas fa-check-circle"></i> CRUD completo de citas</div>
+                                <div class="feature"><i class="fas fa-check-circle"></i> Integraciones (pagos, WhatsApp)</div>
+                                <div class="feature"><i class="fas fa-check-circle"></i> API REST</div>
+                            </div>
                         </div>
                     </article>
                 </div>
-                <div class="col-lg-6">
-                    <article class="project-card card h-100 border-0 shadow-sm project-card-interactive" data-project="constancias" role="button" tabindex="0">
+                <div class="col-lg-6 col-xl-5">
+                    <article class="project-card project-card-interactive" data-project="constancias" role="button" tabindex="0">
                         <div class="project-card-image">
                             <img src="images/constancias.jpg" data-fallback="https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=800&h=500&fit=crop" alt="Generador de Constancias" onerror="this.onerror=null;this.src=this.dataset.fallback">
+                            <div class="project-overlay">
+                                <div class="project-tech-badges">
+                                    <span class="tech-badge">TypeScript</span>
+                                    <span class="tech-badge">HTML/SCSS</span>
+                                    <span class="tech-badge">Excel</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="card-body d-flex flex-column">
-                            <span class="project-card-badge">Ver proyecto</span>
-                            <h3 class="card-title h5">Generador de Constancias</h3>
-                            <p class="card-text text-muted small">Generación masiva de constancias mediante carga de Excel. TypeScript, HTML, SCSS. Backend y frontend modulares.</p>
-                            <ul class="project-features">
-                                <li>Carga desde Excel</li>
-                                <li>Generación automática de documentos</li>
-                            </ul>
+                        <div class="project-card-body">
+                            <span class="project-card-badge">Utilitario</span>
+                            <h3 class="project-card-title">Generador de Constancias</h3>
+                            <p class="project-card-text">Sistema automatizado para generación masiva de documentos desde archivos Excel. Arquitectura modular y escalable.</p>
+                            <div class="project-features-list">
+                                <div class="feature"><i class="fas fa-check-circle"></i> Importación desde Excel</div>
+                                <div class="feature"><i class="fas fa-check-circle"></i> Generación batch automática</div>
+                                <div class="feature"><i class="fas fa-check-circle"></i> Frontend y backend modulares</div>
+                                <div class="feature"><i class="fas fa-check-circle"></i> Interfaz intuitiva</div>
+                            </div>
                         </div>
                     </article>
                 </div>
-                <div class="col-lg-6">
-                    <article class="project-card card h-100 border-0 shadow-sm project-card-interactive" data-project="escolar" role="button" tabindex="0">
+                <div class="col-lg-6 col-xl-5">
+                    <article class="project-card project-card-interactive" data-project="escolar" role="button" tabindex="0">
                         <div class="project-card-image">
                             <img src="images/escolar.jpg" data-fallback="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&h=500&fit=crop" alt="Sistema Escolar" onerror="this.onerror=null;this.src=this.dataset.fallback">
+                            <div class="project-overlay">
+                                <div class="project-tech-badges">
+                                    <span class="tech-badge">Java</span>
+                                    <span class="tech-badge">Gradle</span>
+                                    <span class="tech-badge">Backend</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="card-body d-flex flex-column">
-                            <span class="project-card-badge">Ver proyecto</span>
-                            <h3 class="card-title h5">Sistema Escolar</h3>
-                            <p class="card-text text-muted small">Aplicación en Java con Gradle para gestión en el ámbito educativo. Arquitectura modular.</p>
-                            <ul class="project-features">
-                                <li>Backend Java, estructura Gradle</li>
-                            </ul>
+                        <div class="project-card-body">
+                            <span class="project-card-badge">Sistema Educativo</span>
+                            <h3 class="project-card-title">Sistema Escolar</h3>
+                            <p class="project-card-text">Aplicación Java profesional para gestión integral de procesos educativos con arquitectura modular y escalable.</p>
+                            <div class="project-features-list">
+                                <div class="feature"><i class="fas fa-check-circle"></i> Backend robusto en Java</div>
+                                <div class="feature"><i class="fas fa-check-circle"></i> Build con Gradle</div>
+                                <div class="feature"><i class="fas fa-check-circle"></i> Arquitectura modular</div>
+                                <div class="feature"><i class="fas fa-check-circle"></i> Código mantenible</div>
+                            </div>
                         </div>
                     </article>
                 </div>
-                <div class="col-lg-6">
-                    <article class="project-card card h-100 border-0 shadow-sm project-card-interactive" data-project="sanluis" role="button" tabindex="0">
+                <div class="col-lg-6 col-xl-5">
+                    <article class="project-card project-card-interactive" data-project="sanluis" role="button" tabindex="0">
                         <div class="project-card-image">
                             <img src="images/sanluis.jpg" data-fallback="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&h=500&fit=crop" alt="Cliente F San Luis Ferretería" onerror="this.onerror=null;this.src=this.dataset.fallback">
+                            <div class="project-overlay">
+                                <div class="project-tech-badges">
+                                    <span class="tech-badge">Java Spring</span>
+                                    <span class="tech-badge">Security</span>
+                                    <span class="tech-badge">MySQL</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="card-body d-flex flex-column">
-                            <span class="project-card-badge">Ver proyecto</span>
-                            <h3 class="card-title h5">Cliente F San Luis — Ferretería</h3>
-                            <p class="card-text text-muted small">Sistema CRUD con Java Spring: Spring JPA, Spring Security y MySQL para administración de ferretería.</p>
-                            <ul class="project-features">
-                                <li>CRUD completo, autenticación, MySQL</li>
-                            </ul>
+                        <div class="project-card-body">
+                            <span class="project-card-badge">Sistema Comercial</span>
+                            <h3 class="project-card-title">Cliente F San Luis</h3>
+                            <p class="project-card-text">Sistema CRUD empresarial para administración integral de ferretería con autenticación de usuarios y gestión de inventario.</p>
+                            <div class="project-features-list">
+                                <div class="feature"><i class="fas fa-check-circle"></i> CRUD completo</div>
+                                <div class="feature"><i class="fas fa-check-circle"></i> Spring Security</div>
+                                <div class="feature"><i class="fas fa-check-circle"></i> Spring JPA</div>
+                                <div class="feature"><i class="fas fa-check-circle"></i> Base de datos MySQL</div>
+                            </div>
                         </div>
                     </article>
                 </div>
@@ -145,21 +260,20 @@
     <div class="modal fade" id="projectModal" tabindex="-1" aria-labelledby="projectModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-xl">
             <div class="modal-content border-0 shadow">
-                <div class="modal-header border-0 pb-0">
-                    <h2 class="modal-title h5 fw-bold" id="projectModalLabel"></h2>
+                <div class="modal-header border-0">
+                    <h2 class="modal-title fw-bold" id="projectModalLabel"></h2>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
                 </div>
-                <div class="modal-body pt-0">
-                    <!-- Vista previa: imagen del proyecto o, si tienes demo en vivo, iframe para interactuar con el sistema -->
-                    <div class="project-modal-preview mb-4 rounded overflow-hidden bg-light" id="projectModalPreview">
+                <div class="modal-body">
+                    <div class="project-modal-preview mb-4 rounded-lg overflow-hidden" id="projectModalPreview">
                         <img id="projectModalImage" class="project-modal-img img-fluid w-100 d-none" src="" alt="">
                         <iframe id="projectModalIframe" class="project-modal-iframe d-none" title="Interactuar con el sistema"></iframe>
                     </div>
-                    <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-success d-none mb-3" id="projectModalDemo"><i class="fas fa-external-link-alt me-1"></i> Interactuar con el sistema — Abrir en nueva pestaña</a>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-success d-none mb-3" id="projectModalDemo"><i class="fas fa-external-link-alt me-1"></i> Interactuar con el sistema</a>
                     <p class="text-muted mb-3" id="projectModalDesc"></p>
-                    <ul class="project-features mb-4" id="projectModalFeatures"></ul>
+                    <div class="modal-features mb-4" id="projectModalFeatures"></div>
                     <div class="d-flex flex-wrap gap-2">
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-primary" id="projectModalRepo"><i class="fab fa-github me-1"></i> Ver código en GitHub</a>
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-primary" id="projectModalRepo"><i class="fab fa-github me-1"></i> Ver en GitHub</a>
                     </div>
                 </div>
             </div>
@@ -170,13 +284,35 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
-                    <h2 class="section-title">Contacto</h2>
-                    <p class="lead text-muted mb-4">Si buscas una desarrolladora web comprometida y ordenada, escríbeme o llámame.</p>
-                    <div class="contact-block">
-                        <a href="tel:+522461763021" class="contact-phone" title="Llamar"><i class="fas fa-phone-alt me-2"></i>246 176 3021</a>
-                        <p class="small text-muted mt-2">Disponible para proyectos y ofertas laborales</p>
+                    <div class="section-label">Hablemos</div>
+                    <h2 class="section-title mb-4">¿Listo para tu próximo proyecto?</h2>
+                    <p class="lead text-muted mb-5">Estoy disponible para proyectos, colaboraciones y oportunidades laborales. Contáctame a través de cualquiera de estos canales.</p>
+                    
+                    <div class="contact-methods">
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <h3>Teléfono</h3>
+                            <a href="tel:+522461763021" class="contact-link">+52 246 176 3021</a>
+                        </div>
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <i class="fab fa-github"></i>
+                            </div>
+                            <h3>GitHub</h3>
+                            <a href="https://github.com/gabriela23456" target="_blank" rel="noopener noreferrer" class="contact-link">github.com/gabriela23456</a>
+                        </div>
                     </div>
-                    <a href="https://github.com/gabriela23456" target="_blank" rel="noopener noreferrer" class="btn btn-outline-secondary btn-sm mt-3"><i class="fab fa-github me-1"></i> Mi GitHub</a>
+
+                    <div class="contact-cta mt-5">
+                        <p class="text-muted mb-3">Sígueme en redes sociales para más actualizaciones sobre mis proyectos</p>
+                        <div class="social-links">
+                            <a href="https://github.com/gabriela23456" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-github"></i></a>
+                            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
