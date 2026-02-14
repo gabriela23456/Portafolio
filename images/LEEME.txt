@@ -1,0 +1,19 @@
+CÓMO USAR TUS PROPIAS IMÁGENES DE GITHUB/PROYECTOS
+====================================================
+
+En tus repos de GitHub (gabriela23456) no hay capturas de pantalla subidas.
+Cuando tengas capturas de tus proyectos, sigue estos pasos:
+
+1. Toma capturas de pantalla de cada sistema (pantalla principal o dashboard).
+
+2. Guárdalas en esta carpeta "images" con exactamente estos nombres:
+   - terapia.jpg    → CenTI-R Sistema de Terapia Psicológica
+   - constancias.jpg → Generador de Constancias
+   - escolar.jpg    → Sistema Escolar
+   - sanluis.jpg    → Cliente F San Luis (Ferretería)
+
+3. Formatos válidos: .jpg, .jpeg o .png
+   (Si usas .png, edita index.html y script.js y cambia .jpg por .png en las rutas)
+
+4. El portafolio ya está configurado para mostrar estas imágenes.
+   Si el archivo no existe, se muestra una imagen genérica hasta que lo agregues.
