@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cliente F San Luis - Ferretería Demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #3b82f6;
+            --secondary: #06b6d4;
+            --success: #10b981;
+            --danger: #ef4444;
+            --dark: #0f172a;
+            --light: #f8fafc;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(6, 182, 212, 0.05));
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--dark);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .navbar-custom {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 1px 3px rgba(15, 23, 42, 0.1);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 1.3rem;
+        }
+
+        .badge-demo {
+            background: var(--success) !important;
+            color: white;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .card-modern {
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05);
+        }
+
+        .card-modern:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.1);
+            border-color: var(--primary);
+        }
+
+        .btn-action {
+            padding: 0.5rem 1.2rem;
+            border-radius: 8px;
+            font-weight: 500;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary-custom {
+            background: linear-gradient(135deg, var(--primary), #2563eb);
+            color: white;
+        }
+
+        .btn-primary-custom:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+        }
+
+        .btn-secondary-custom {
+            background: white;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-secondary-custom:hover {
+            background: rgba(59, 130, 246, 0.05);
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(6, 182, 212, 0.1));
+            border-radius: 16px;
+            padding: 3rem 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .hero-section h1 {
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .hero-section p {
+            font-size: 1.1rem;
+            color: #64748b;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .feature-box {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            border-left: 4px solid var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.1);
+        }
+
+        .feature-box i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .feature-box h3 {
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .feature-box p {
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .product-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05);
+        }
+
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.1);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(6, 182, 212, 0.1));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        .product-info {
+            padding: 1rem;
+        }
+
+        .product-name {
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .product-price {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .product-stock {
+            font-size: 0.85rem;
+            color: #64748b;
+            margin-bottom: 1rem;
+        }
+
+        .cart-btn {
+            background: var(--success);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.2s ease;
+        }
+
+        .cart-btn:hover {
+            background: #059669;
+            transform: translateY(-2px);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .stat-box {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            border-top: 3px solid var(--primary);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #64748b;
+            font-weight: 600;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 16px;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .cta-section h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .github-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: white;
+            color: var(--primary);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .github-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        footer {
+            background: var(--dark);
+            color: rgba(255, 255, 255, 0.7);
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 4rem;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            transition: all 0.2s ease;
+        }
+
+        .back-btn:hover {
+            transform: translateX(-4px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar-custom">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-hammer"></i>
+                Cliente F San Luis - Ferretería
+            </div>
+        </div>
+    </nav>
+
+    <div class="container py-5">
+        <a href="javascript:history.back()" class="back-btn">
+            <i class="fas fa-arrow-left"></i> Volver al portafolio
+        </a>
+
+        <!-- Hero -->
+        <div class="hero-section">
+            <h1>Sistema de Gestión para Ferretería</h1>
+            <p>Administración integral de inventario, ventas y clientes con arquitectura Spring</p>
+            <span class="badge badge-demo"><i class="fas fa-check-circle"></i> Demo Activa</span>
+        </div>
+
+        <!-- Stats -->
+        <h2 class="mt-5 mb-4" style="font-weight: 800;">Estadísticas del Sistema</h2>
+        <div class="stats-grid">
+            <div class="stat-box">
+                <div class="stat-number">2,547</div>
+                <div class="stat-label">Productos en Catálogo</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">342</div>
+                <div class="stat-label">Clientes Registrados</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">$125K</div>
+                <div class="stat-label">Ventas Mensuales</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">98%</div>
+                <div class="stat-label">Stock Disponible</div>
+            </div>
+        </div>
+
+        <!-- Features -->
+        <h2 class="mt-5 mb-4" style="font-weight: 800;">Funcionalidades Principales</h2>
+        <div class="feature-grid">
+            <div class="feature-box">
+                <i class="fas fa-boxes"></i>
+                <h3>Gestión de Inventario</h3>
+                <p>Control de stock en tiempo real con alertas automáticas de bajo inventario</p>
+            </div>
+            <div class="feature-box">
+                <i class="fas fa-shopping-cart"></i>
+                <h3>CRUD de Productos</h3>
+                <p>Crear, leer, actualizar y eliminar productos con categorización completa</p>
+            </div>
+            <div class="feature-box">
+                <i class="fas fa-credit-card"></i>
+                <h3>Procesamiento de Ventas</h3>
+                <p>Sistema de punto de venta con facturación automática y reportes financieros</p>
+            </div>
+            <div class="feature-box">
+                <i class="fas fa-user-shield"></i>
+                <h3>Autenticación Segura</h3>
+                <p>Spring Security con roles de usuario (admin, vendedor, cliente)</p>
+            </div>
+        </div>
+
+        <!-- Sample Products -->
+        <h2 class="mt-5 mb-4" style="font-weight: 800;">Catálogo de Productos</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-image">🔨</div>
+                <div class="product-info">
+                    <div class="product-name">Martillo 16oz</div>
+                    <div class="product-price">$45.99</div>
+                    <div class="product-stock">Stock: 45 unidades</div>
+                    <button class="cart-btn">Agregar</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">🔧</div>
+                <div class="product-info">
+                    <div class="product-name">Kit Herramientas</div>
+                    <div class="product-price">$89.99</div>
+                    <div class="product-stock">Stock: 28 unidades</div>
+                    <button class="cart-btn">Agregar</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">🪛</div>
+                <div class="product-info">
+                    <div class="product-name">Destornillador Set</div>
+                    <div class="product-price">$34.50</div>
+                    <div class="product-stock">Stock: 67 unidades</div>
+                    <button class="cart-btn">Agregar</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">📏</div>
+                <div class="product-info">
+                    <div class="product-name">Metro 5 Metros</div>
+                    <div class="product-price">$12.99</div>
+                    <div class="product-stock">Stock: 92 unidades</div>
+                    <button class="cart-btn">Agregar</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">🪚</div>
+                <div class="product-info">
+                    <div class="product-name">Sierra Manual</div>
+                    <div class="product-price">$28.50</div>
+                    <div class="product-stock">Stock: 15 unidades</div>
+                    <button class="cart-btn">Agregar</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">🔩</div>
+                <div class="product-info">
+                    <div class="product-name">Juego de Tornillos</div>
+                    <div class="product-price">$19.99</div>
+                    <div class="product-stock">Stock: 150 unidades</div>
+                    <button class="cart-btn">Agregar</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stack Tecnológico -->
+        <h2 class="mt-5 mb-4" style="font-weight: 800;">Stack Tecnológico</h2>
+        <div class="row g-3">
+            <div class="col-md-3">
+                <div class="card card-modern">
+                    <div class="card-body text-center py-4">
+                        <i class="fab fa-java" style="font-size: 3rem; color: var(--primary);"></i>
+                        <h5 class="mt-3">Java Spring</h5>
+                        <p class="text-muted small">Framework robusto</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card card-modern">
+                    <div class="card-body text-center py-4">
+                        <i class="fas fa-shield-alt" style="font-size: 3rem; color: var(--primary);"></i>
+                        <h5 class="mt-3">Spring Security</h5>
+                        <p class="text-muted small">Autenticación avanzada</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card card-modern">
+                    <div class="card-body text-center py-4">
+                        <i class="fas fa-database" style="font-size: 3rem; color: var(--primary);"></i>
+                        <h5 class="mt-3">MySQL</h5>
+                        <p class="text-muted small">Persistencia relacional</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card card-modern">
+                    <div class="card-body text-center py-4">
+                        <i class="fas fa-code-branch" style="font-size: 3rem; color: var(--primary);"></i>
+                        <h5 class="mt-3">JPA</h5>
+                        <p class="text-muted small">ORM mapping</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-section">
+            <h2>¿Quieres explorar la arquitectura?</h2>
+            <p>Descubre la implementación de Spring Framework, seguridad empresarial y patrones de desarrollo</p>
+            <a href="https://github.com/gabriela23456/Cliente-F-San-Luis" target="_blank" class="github-link">
+                <i class="fab fa-github"></i> Ver en GitHub
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Cliente F San Luis - Desarrollado por Gabriela Tecuapacho Juárez</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Simple demo interactivity
+        document.querySelectorAll('.cart-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const productName = this.parentElement.querySelector('.product-name').textContent;
+                alert(`✅ ${productName} añadido al carrito`);
+            });
+        });
+    </script>
+</body>
+</html>

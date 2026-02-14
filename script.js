@@ -46,7 +46,7 @@ const PROJECTS = {
     imageUrl: 'images/escolar.jpg',
     fallbackImageUrl: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&h=500&fit=crop',
     repoUrl: 'https://github.com/gabriela23456/Sistema-Escolar',
-    demoUrl: ''
+    demoUrl: 'sistema-escolar-demo.html'
   },
   sanluis: {
     title: 'Cliente F San Luis — Ferretería',
@@ -62,7 +62,7 @@ const PROJECTS = {
     imageUrl: 'images/sanluis.jpg',
     fallbackImageUrl: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&h=500&fit=crop',
     repoUrl: 'https://github.com/gabriela23456/Cliente-F-San-Luis',
-    demoUrl: ''
+    demoUrl: 'sistema-sanluis-demo.html'
   }
 };
 

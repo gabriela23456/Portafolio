@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Escolar - Demo Interactivo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #3b82f6;
+            --secondary: #06b6d4;
+            --success: #10b981;
+            --danger: #ef4444;
+            --dark: #0f172a;
+            --light: #f8fafc;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(6, 182, 212, 0.05));
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--dark);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .navbar-custom {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 1px 3px rgba(15, 23, 42, 0.1);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 1.3rem;
+        }
+
+        .badge-demo {
+            background: var(--success) !important;
+            color: white;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .card-modern {
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05);
+        }
+
+        .card-modern:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.1);
+            border-color: var(--primary);
+        }
+
+        .btn-action {
+            padding: 0.5rem 1.2rem;
+            border-radius: 8px;
+            font-weight: 500;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary-custom {
+            background: linear-gradient(135deg, var(--primary), #2563eb);
+            color: white;
+        }
+
+        .btn-primary-custom:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+        }
+
+        .btn-secondary-custom {
+            background: white;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-secondary-custom:hover {
+            background: rgba(59, 130, 246, 0.05);
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(6, 182, 212, 0.1));
+            border-radius: 16px;
+            padding: 3rem 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .hero-section h1 {
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .hero-section p {
+            font-size: 1.1rem;
+            color: #64748b;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .feature-box {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            border-left: 4px solid var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.1);
+        }
+
+        .feature-box i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .feature-box h3 {
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .feature-box p {
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        .table-demo {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05);
+            margin: 2rem 0;
+        }
+
+        .table-demo table {
+            margin: 0;
+            width: 100%;
+        }
+
+        .table-demo th {
+            background: linear-gradient(135deg, var(--primary), #2563eb);
+            color: white;
+            font-weight: 600;
+            border: none;
+            padding: 1rem !important;
+        }
+
+        .table-demo td {
+            padding: 1rem !important;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .table-demo tr:hover {
+            background: rgba(59, 130, 246, 0.03);
+        }
+
+        .status-badge {
+            padding: 0.35rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .status-activo {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--success);
+        }
+
+        .status-pendiente {
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--primary);
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 16px;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .cta-section h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .github-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: white;
+            color: var(--primary);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .github-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        footer {
+            background: var(--dark);
+            color: rgba(255, 255, 255, 0.7);
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 4rem;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            transition: all 0.2s ease;
+        }
+
+        .back-btn:hover {
+            transform: translateX(-4px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar-custom">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                Sistema Escolar
+            </div>
+        </div>
+    </nav>
+
+    <div class="container py-5">
+        <a href="javascript:history.back()" class="back-btn">
+            <i class="fas fa-arrow-left"></i> Volver al portafolio
+        </a>
+
+        <!-- Hero -->
+        <div class="hero-section">
+            <h1>Sistema Escolar Integral</h1>
+            <p>Gestión completa de procesos educativos con tecnología Java empresarial</p>
+            <span class="badge badge-demo"><i class="fas fa-check-circle"></i> Demo Activa</span>
+        </div>
+
+        <!-- Features -->
+        <h2 class="mt-5 mb-4" style="font-weight: 800;">Funcionalidades Principales</h2>
+        <div class="feature-grid">
+            <div class="feature-box">
+                <i class="fas fa-users"></i>
+                <h3>Gestión de Alumnos</h3>
+                <p>Registro y administración completa de estudiantes con historial académico</p>
+            </div>
+            <div class="feature-box">
+                <i class="fas fa-chalkboard-user"></i>
+                <h3>Maestros y Materias</h3>
+                <p>Asignación de docentes a materias y seguimiento de carga académica</p>
+            </div>
+            <div class="feature-box">
+                <i class="fas fa-star"></i>
+                <h3>Calificaciones</h3>
+                <p>Sistema de evaluación y registro detallado de desempeño estudiantil</p>
+            </div>
+            <div class="feature-box">
+                <i class="fas fa-user-tie"></i>
+                <h3>Padres de Familia</h3>
+                <p>Portal para padres con acceso a información académica de sus hijos</p>
+            </div>
+        </div>
+
+        <!-- Demo Table -->
+        <h2 class="mt-5 mb-4" style="font-weight: 800;">Ejemplo de Datos</h2>
+        <div class="table-demo">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Alumno</th>
+                        <th>Materia</th>
+                        <th>Calificación</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Juan Pérez</strong></td>
+                        <td>Matemáticas</td>
+                        <td>9.2</td>
+                        <td><span class="status-badge status-activo">Aprobado</span></td>
+                        <td><button class="btn-action btn-primary-custom">Editar</button></td>
+                    </tr>
+                    <tr>
+                        <td><strong>María González</strong></td>
+                        <td>Español</td>
+                        <td>8.5</td>
+                        <td><span class="status-badge status-activo">Aprobado</span></td>
+                        <td><button class="btn-action btn-primary-custom">Editar</button></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Carlos López</strong></td>
+                        <td>Ciencias</td>
+                        <td>7.8</td>
+                        <td><span class="status-badge status-pendiente">En Revisión</span></td>
+                        <td><button class="btn-action btn-primary-custom">Editar</button></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ana Martínez</strong></td>
+                        <td>Historia</td>
+                        <td>9.0</td>
+                        <td><span class="status-badge status-activo">Aprobado</span></td>
+                        <td><button class="btn-action btn-primary-custom">Editar</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Stack Tecnológico -->
+        <h2 class="mt-5 mb-4" style="font-weight: 800;">Stack Tecnológico</h2>
+        <div class="row g-3">
+            <div class="col-md-3">
+                <div class="card card-modern">
+                    <div class="card-body text-center py-4">
+                        <i class="fab fa-java" style="font-size: 3rem; color: var(--primary);"></i>
+                        <h5 class="mt-3">Java</h5>
+                        <p class="text-muted small">Backend robusto</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card card-modern">
+                    <div class="card-body text-center py-4">
+                        <i class="fas fa-database" style="font-size: 3rem; color: var(--primary);"></i>
+                        <h5 class="mt-3">SQL</h5>
+                        <p class="text-muted small">Persistencia de datos</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card card-modern">
+                    <div class="card-body text-center py-4">
+                        <i class="fas fa-cube" style="font-size: 3rem; color: var(--primary);"></i>
+                        <h5 class="mt-3">Gradle</h5>
+                        <p class="text-muted small">Build automation</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card card-modern">
+                    <div class="card-body text-center py-4">
+                        <i class="fas fa-shield-alt" style="font-size: 3rem; color: var(--primary);"></i>
+                        <h5 class="mt-3">Security</h5>
+                        <p class="text-muted small">Autenticación segura</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-section">
+            <h2>¿Quieres ver el código fuente?</h2>
+            <p>Explora la arquitectura modular, patrones de diseño y mejores prácticas implementadas</p>
+            <a href="https://github.com/gabriela23456/Sistema-Escolar" target="_blank" class="github-link">
+                <i class="fab fa-github"></i> Ver en GitHub
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Sistema Escolar - Desarrollado por Gabriela Tecuapacho Juárez</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
