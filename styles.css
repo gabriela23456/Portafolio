@@ -733,6 +733,11 @@ body {
     }
 }
 
+/* Nuevo contenedor para mostrar el mensaje de abrir demo */
+#projectModalIframeContainer {
+    padding: 3rem;
+}
+
 .modal-features {
     display: grid;
     gap: 0.75rem;

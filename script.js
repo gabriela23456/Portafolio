@@ -87,22 +87,18 @@ function openProjectModal(projectId) {
   repoBtn.href = data.repoUrl;
 
   const imageEl = document.getElementById('projectModalImage');
-  const iframeEl = document.getElementById('projectModalIframe');
-  const demoBtn = document.getElementById('projectModalDemo');
+  const iframeContainer = document.getElementById('projectModalIframeContainer');
+  const demoBtnNew = document.getElementById('projectModalDemoBtn');
 
   // Ocultar todo primero
   imageEl.classList.add('d-none');
   imageEl.removeAttribute('src');
-  iframeEl.classList.add('d-none');
-  iframeEl.removeAttribute('src');
-  demoBtn.classList.add('d-none');
+  iframeContainer.classList.add('d-none');
 
   if (data.demoUrl) {
-    // Hay demo: mostrar iframe para que puedan interactuar con el sistema
-    iframeEl.src = data.demoUrl;
-    iframeEl.classList.remove('d-none');
-    demoBtn.href = data.demoUrl;
-    demoBtn.classList.remove('d-none');
+    // Hay demo: mostrar botón para abrir en nueva pestaña
+    demoBtnNew.href = data.demoUrl;
+    iframeContainer.classList.remove('d-none');
   } else {
     // Sin demo: mostrar imagen del proyecto (primero local, si falla la de respaldo)
     imageEl.src = data.imageUrl;
@@ -117,11 +113,6 @@ function openProjectModal(projectId) {
   const bsModal = new bootstrap.Modal(modal);
   bsModal.show();
 }
-
-// Al cerrar el modal, vaciar el iframe para dejar de cargar la página
-document.getElementById('projectModal').addEventListener('hidden.bs.modal', function () {
-  document.getElementById('projectModalIframe').removeAttribute('src');
-});
 
 // Event listeners para tarjetas de proyectos
 document.querySelectorAll('.project-card-interactive').forEach(card => {
